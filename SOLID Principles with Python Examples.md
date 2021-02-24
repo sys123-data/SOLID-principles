@@ -107,7 +107,8 @@ class Discount:
    """Demo customer discount class"""
    def __init__(self, customer, price):
        self.customer = customer
-       self.price = price   def give_discount(self):
+       self.price = price   
+   def give_discount(self):
        """A discount method"""
        if self.customer == 'normal':
            return self.price * 0.2
@@ -138,13 +139,18 @@ class Discount:
    """Demo customer discount class"""
    def __init__(self, customer, price):
        self.customer = customer
-       self.price = price   def get_discount(self):
+       self.price = price   
+   def get_discount(self):
        """A discount method"""
-       return self.price * 0.2class VIPDiscount(Discount):
+       return self.price * 0.2
+
+class VIPDiscount(Discount):
    """Demo VIP customer discount class"""
    def get_discount(self):
        """A discount method"""
-       return super().get_discount() * 2class SuperVIPDiscount(VIPDiscount):
+       return super().get_discount() * 2
+    
+class SuperVIPDiscount(VIPDiscount):
    """Demo super vip customer discount class"""
    def get_discount(self):
        """A discount method"""
@@ -187,12 +193,14 @@ class Vehicle:
 
 class Car(Vehicle):
    """A demo Car Vehicle class"""
+
    def start_engine(self):
        pass
 
 
 class Bicycle(Vehicle):
    """A demo Bicycle Vehicle class"""
+
    def start_engine(self):
        pass
 ```
@@ -204,27 +212,46 @@ Refactor the code and make a solution for this problem.
 ```python
 class Vehicle:
    """A demo Vehicle class"""
+
    def __init__(self, name: str, speed: float):
        self.name = name
-       self.speed = speed   def get_name(self) -> str:
+       self.speed = speed  
+        
+   def get_name(self) -> str:
        """Get vehicle name"""
-       return f"The vehicle name {self.name}"   def get_speed(self) -> str:
+       return f"The vehicle name {self.name}"   
+
+   def get_speed(self) -> str:
        """Get vehicle speed"""
-       return f"The vehicle speed {self.speed}"class VehicleWithoutEngine(Vehicle):
+       return f"The vehicle speed {self.speed}"
+
+class VehicleWithoutEngine(Vehicle):
    """A demo Vehicle without engine class"""
+
    def start_moving(self):
       """Moving"""
-      raise NotImplementedclass VehicleWithEngine(Vehicle):
+      raise NotImplemented
+        
+class VehicleWithEngine(Vehicle):
    """A demo Vehicle engine class"""
+
    def engine(self):
       """A vehicle engine"""
-      pass   def start_engine(self):
-      """A vehicle engine start"""
-      self.engine()class Car(VehicleWithEngine):
-   """A demo Car Vehicle class"""
+      pass   
+    
    def start_engine(self):
-       passclass Bicycle(VehicleWithoutEngine):
+      """A vehicle engine start"""
+      self.engine()
+        
+class Car(VehicleWithEngine):
+   """A demo Car Vehicle class"""
+
+   def start_engine(self):
+       pass
+
+class Bicycle(VehicleWithoutEngine):
    """A demo Bicycle Vehicle class""" 
+
    def start_moving(self):
        pass
 ```
@@ -240,15 +267,23 @@ Violation of ISP**
 ```python
 class Shape:
    """A demo shape class"""
+
    def draw_circle(self):
        """Draw a circle"""
-       raise NotImplemented   def draw_square(self):
+       raise NotImplemented   
+        
+   def draw_square(self):
        """ Draw a square"""
-       raise NotImplementedclass Circle(Shape):
+       raise NotImplemented
+        
+class Circle(Shape):
     """A demo circle class"""
+    
    def draw_circle(self):
        """Draw a circle"""
-       pass   def draw_square(self):
+       pass   
+
+   def draw_square(self):
        """ Draw a square"""
        pass
 ```
@@ -259,14 +294,21 @@ In the above example, we need to call an unnecessary method in the Circle class.
 ```python
 class Shape:
    """A demo shape class"""
+
    def draw(self):
       """Draw a shape"""
-      raise NotImplementedclass Circle(Shape):
+      raise NotImplemented
+        
+class Circle(Shape):
    """A demo circle class"""
+
    def draw(self):
       """Draw a circle"""
-      passclass Square(Shape):
+      pass
+    
+class Square(Shape):
    """A demo square class"""
+
    def draw(self):
       """Draw a square"""
       pass
@@ -278,13 +320,20 @@ Another example
 class BankAccount:
    """A demo Bank Account class"""
    def __init__(self, balance: float, account: str):
-       self.account = {f"{account}": balance}   def balance(self, account: str):
+       self.account = {f"{account}": balance} 
+    
+   def balance(self, account: str):
        """Get current balance"""
-       raise NotImplementedclass Deposit(BankAccount):
+       raise NotImplemented
+    
+class Deposit(BankAccount):
    """A demo circle class"""
+
    def balance(self, account: str):
       """Get current balance"""
-      return self.account.get(account)   def deposit(self, amount: float, account: str):
+      return self.account.get(account)  
+    
+   def deposit(self, amount: float, account: str):
        """Deposit a new amount"""
        current = self.balance(account)
        new_amount = current + amount
@@ -302,20 +351,31 @@ Violation of DIP**
 ```python
 class BackendDeveloper:
     """This is a low-level module"""
+    
     @staticmethod
     def python():
-        print("Writing Python code")class FrontendDeveloper:
+        print("Writing Python code")
+        
+class FrontendDeveloper:
     """This is a low-level module"""
+    
     @staticmethod
     def javascript():
-        print("Writing JavaScript code")class Project:
+        print("Writing JavaScript code")
+        
+class Project:
     """This is a high-level module"""
+    
     def __init__(self):
         self.backend = BackendDeveloper()
-        self.frontend = FrontendDeveloper()    def develop(self):
+        self.frontend = FrontendDeveloper()    
+        
+    def develop(self):
         self.backend.python()
         self.frontend.javascript()
-        return "Develop codebase"project = Project()
+        return "Develop codebase"
+    
+project = Project()
 print(project.develop())
 ```
 
@@ -324,21 +384,27 @@ Another example
 ```python
 class NewsPerson:
     """This is a high-level module"""
+    
     @staticmethod
     def publish(news: str) -> None:
         """
         :param news:
         :return:
         """
-        print(NewsPaper().publish(news=news))class NewsPaper:
+        print(NewsPaper().publish(news=news))
+        
+class NewsPaper:
     """This is a low-level module"""
+    
     @staticmethod
     def publish(news: str) -> None:
         """
         :param news:
         :return:
         """
-        print(f"{news} Hello newspaper")person = NewsPerson()
+        print(f"{news} Hello newspaper")
+        
+person = NewsPerson()
 print(person.publish("News Paper"))
 ```
 
@@ -349,26 +415,45 @@ The project class is a high-level module and backend & frontend are the low-leve
 ```python
 class BackendDeveloper:
    """This is a low-level module"""
+
    def develop(self):
-       self.__python_code()   @staticmethod
+       self.__python_code()   
+    
+   @staticmethod
    def __python_code():
-       print("Writing Python code")class FrontendDeveloper:
+       print("Writing Python code")
+    
+class FrontendDeveloper:
    """This is a low-level module"""
+
    def develop(self):
-       self.__javascript()   @staticmethod
+       self.__javascript()   
+    
+   @staticmethod
    def __javascript():
-       print("Writing JavaScript code")class Developers:
+       print("Writing JavaScript code")
+    
+class Developers:
    """An Abstract module"""
+
    def __init__(self):
        self.backend = BackendDeveloper()
-       self.frontend = FrontendDeveloper()   def develop(self):
+       self.frontend = FrontendDeveloper()   
+        
+   def develop(self):
        self.backend.develop()
-       self.frontend.develop()class Project:
+       self.frontend.develop()
+    
+class Project:
    """This is a high-level module"""
+
    def __init__(self):
        self.__developers = Developers()
+    
    def develops(self):
-       return self.__developers.develop()project = Project()
+       return self.__developers.develop()
+    
+project = Project()
 print(project.develops())
 ```
 
@@ -377,17 +462,26 @@ Example 2:
 ```python
 class NewsPerson:
    """This is a high-level module"""
+
    @staticmethod
    def publish(news: str, publisher=None) -> None:
-       print(publisher.publish(news=news))class NewsPaper:
+       print(publisher.publish(news=news))
+        
+class NewsPaper:
    """This is a low-level module"""
+
    @staticmethod
    def publish(news: str) -> None:
-       print("{} news paper".format(news))class Facebook:
+       print("{} news paper".format(news))
+        
+class Facebook:
    """This is a low-level module"""
+
    @staticmethod
    def publish(news: str) -> None:
-       print(f"{news} - share this post on {news}")person = NewsPerson()
+       print(f"{news} - share this post on {news}")
+        
+person = NewsPerson()
 person.publish("hello", NewsPaper())
 person.publish("facebook", Facebook())
 ```
