@@ -44,7 +44,7 @@ Let’s go through each principle one by one:
 **Example:
 Violation of SRP**
 
-```
+```python
 class Account:
    “””Demo bank account class “””
    def __init__(self, account_no: str):
@@ -60,7 +60,7 @@ class Account:
 
 **Solution:** A common solution to this problem is to apply the facade pattern. Let’s create another class and this class will handle database management job and the account class will only handle his properties.
 
-```
+```python
 class AccountDB:
    """Account DB management class """
 
@@ -102,7 +102,7 @@ class Account:
 **Example:
 Violation of OCP**
 
-```
+```python
 class Discount:
    """Demo customer discount class"""
    def __init__(self, customer, price):
@@ -117,7 +117,7 @@ class Discount:
 
 This example is failed to pass the Open and Close Principle(OCP). Assume, we have a super VIP customer and we want to give a discount of 0.8 percentage. What would we do in this case? Maybe we will solve the problem this way
 
-```
+```python
 .......
     def give_discount(self):
        """A discount method"""
@@ -133,7 +133,7 @@ But this solution violates the OCP. Because we can’t modify the give_discount 
 
 **Solution:**
 
-```
+```python
 class Discount:
    """Demo customer discount class"""
    def __init__(self, customer, price):
@@ -160,7 +160,7 @@ Liskov Substitution Principle was introduced by Barbara Liskov in her conference
 **Example
 Violation of LSP**
 
-```
+```python
 class Vehicle:
    """A demo Vehicle class"""
 
@@ -201,7 +201,7 @@ In Bicycle class violates the LSP. Cause in the Vehicle class has an engine meth
 Refactor the code and make a solution for this problem.
 **Solution:**
 
-```
+```python
 class Vehicle:
    """A demo Vehicle class"""
    def __init__(self, name: str, speed: float):
@@ -237,7 +237,7 @@ Actually, LSP is a concept that applies to all kinds of polymorphism. Only if yo
 **Example:
 Violation of ISP**
 
-```
+```python
 class Shape:
    """A demo shape class"""
    def draw_circle(self):
@@ -256,7 +256,7 @@ class Shape:
 In the above example, we need to call an unnecessary method in the Circle class. Hence the example violated the Interface Segregation Principle.
 **Solution:**
 
-```
+```python
 class Shape:
    """A demo shape class"""
    def draw(self):
@@ -274,7 +274,7 @@ class Shape:
 
 Another example
 
-```
+```python
 class BankAccount:
    """A demo Bank Account class"""
    def __init__(self, balance: float, account: str):
@@ -299,7 +299,7 @@ b. Abstractions should not depend on details. Details should depend on abstracti
 **Example:
 Violation of DIP**
 
-```
+```python
 class BackendDeveloper:
     """This is a low-level module"""
     @staticmethod
@@ -321,7 +321,7 @@ print(project.develop())
 
 Another example
 
-```
+```python
 class NewsPerson:
     """This is a high-level module"""
     @staticmethod
@@ -346,7 +346,7 @@ The project class is a high-level module and backend & frontend are the low-leve
 **Solution:
 **Example 1
 
-```
+```python
 class BackendDeveloper:
    """This is a low-level module"""
    def develop(self):
@@ -374,7 +374,7 @@ print(project.develops())
 
 Example 2:
 
-```
+```python
 class NewsPerson:
    """This is a high-level module"""
    @staticmethod
