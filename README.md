@@ -1,5 +1,5 @@
-# SOLID principles and naming Convention
- SOLID-principles 
+# SOLID principles and Naming Convention in python
+ [SOLID-principles](https://github.com/georgecristian97/SOLID-principles/blob/main/SOLID%20Principles%20with%20Python%20Examples.md) 
 
 
 
@@ -7,7 +7,7 @@
 
 
 
-:star: SRP:
+:star: [SRP](https://github.com/georgecristian97/SOLID-principles/tree/main/SOLID%20Demos/SRP):
 
 OPEN SQLITE -> new db	
 
@@ -16,3 +16,8 @@ Username text PK
 Password 
 
 EmailID
+
+:star:[ISP](https://github.com/georgecristian97/SOLID-principles/tree/main/SOLID%20Demos/ISP):
+
+
+
